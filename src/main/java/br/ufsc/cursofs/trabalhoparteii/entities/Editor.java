@@ -1,7 +1,6 @@
 package br.ufsc.cursofs.trabalhoparteii.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,24 +9,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Postagem implements Serializable{
-	
+public class Editor implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Instant data;
-	private String titulo;
-	private String texto;
-	
-	public Postagem() {}
-	
-	public Postagem(Long id, Instant data, String titulo, String texto) {
+	private String nome;
+	private String senha;
+
+	public Editor() {
+	}
+
+	public Editor(Long id, String nome, String senha) {
 		super();
 		this.id = id;
-		this.data = data;
-		this.titulo = titulo;
-		this.texto = texto;
+		this.nome = nome;
+		this.senha = senha;
 	}
 
 	public Long getId() {
@@ -38,28 +36,20 @@ public class Postagem implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getData() {
-		return data;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setData(Instant data) {
-		this.data = data;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getTexto() {
-		return texto;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
@@ -75,11 +65,11 @@ public class Postagem implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Postagem other = (Postagem) obj;
+		Editor other = (Editor) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	public Double getTotalPalavras() {
+
+	public Double getTotalPostagens() {
 		return null;
 	}
 
