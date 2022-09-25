@@ -1,12 +1,15 @@
 package br.ufsc.cursofs.trabalhoparteii.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Editor implements Serializable {
@@ -17,6 +20,9 @@ public class Editor implements Serializable {
 	private Long id;
 	private String nome;
 	private String senha;
+
+	@OneToMany(mappedBy = "editor")
+	private List<Postagem> postagens = new ArrayList<Postagem>();
 
 	public Editor() {
 	}

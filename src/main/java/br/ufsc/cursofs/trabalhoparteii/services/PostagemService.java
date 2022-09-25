@@ -14,12 +14,19 @@ public class PostagemService {
 	@Autowired
 	private PostagemRepository postagemRepository;
 
+	// Busca todos as postagens no banco de dados
 	public List<Postagem> findAll() {
 		return postagemRepository.findAll();
 	}
 
+	// Busca postagem pela id
 	public Postagem findById(Long id) {
 		return postagemRepository.findById(id).get();
+	}
+
+	// Salva postagem no banco de dados
+	public Postagem save(Postagem postagem) {
+		return postagemRepository.save(postagem);
 	}
 
 }

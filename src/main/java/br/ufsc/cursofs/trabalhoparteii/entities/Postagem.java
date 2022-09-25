@@ -8,10 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Postagem implements Serializable{
-	
+public class Postagem implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +23,22 @@ public class Postagem implements Serializable{
 	private Instant data;
 	private String titulo;
 	private String texto;
-	
-	public Postagem() {}
-	
-	public Postagem(Long id, Instant data, String titulo, String texto) {
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "editor_id")
+	private Editor editor;
+
+	public Postagem() {
+	}
+
+	public Postagem(Long id, Instant data, String titulo, String texto, Editor editor) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.titulo = titulo;
 		this.texto = texto;
+		this.editor = editor;
 	}
 
 	public Long getId() {
@@ -78,7 +89,7 @@ public class Postagem implements Serializable{
 		Postagem other = (Postagem) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 	public Double getTotalPalavras() {
 		return null;
 	}
