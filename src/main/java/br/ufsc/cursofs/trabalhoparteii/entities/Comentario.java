@@ -1,7 +1,7 @@
 package br.ufsc.cursofs.trabalhoparteii.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -17,13 +17,13 @@ public class Comentario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private Date data;
+	private Instant data;
 	private String text;
 
 	public Comentario() {
 	}
 
-	public Comentario(Long id, String nome, Date data, String text) {
+	public Comentario(Long id, String nome, Instant data, String text) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -47,11 +47,11 @@ public class Comentario implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 
